@@ -14,17 +14,16 @@ function getJokes(e) {
   xhr.onload = function() {
     if (this.status === 200) {
       const response = JSON.parse(this.responseText);
-      
+      let output = '';
       // Check whether API response is success
       if (response.type === 'success') {
-        let output = '';
 
         // Loop through response values containing jokes
         response.value.forEach(function(jokeItem) {
 
           // Append each joke item to li element
           output += `<li>${jokeItem.joke}</li>`;
-        })
+        });
       } else {
         // If API response is not proper than display error
         output += `<li>Something went wrong!!!</li>`;
